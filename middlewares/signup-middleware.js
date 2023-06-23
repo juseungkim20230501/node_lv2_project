@@ -3,7 +3,7 @@ const userSchema = require('../schemas/user');
 module.exports = async (req, res, next) => {
   const { nickname, password, confirmPassword } = req.body;
   try {
-    if (nickname.length <= 3 || !/^[a-zA-Z0-9]+$/.test(nickname)) {
+    if (nickname.length < 3 || !/^[a-zA-Z0-9]+$/.test(nickname)) {
       return res.status(412).json({
         errorMessage:
           '닉네임은 최소 3자 이상이며, 알파벳 대소문자와 숫자로만 구성되어야 합니다.',
